@@ -2,11 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Farmer on Tools Portal</title>
-    <link>http://localhost:1313/farmer-id/</link>
+    <link>http://localhost:1313/card/farmer-id-6epnjoxdzi/</link>
     <description>Recent content in Farmer on Tools Portal</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate></lastBuildDate>
-    <atom:link href="http://localhost:1313/farmer-id/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/card/farmer-id-6epnjoxdzi/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

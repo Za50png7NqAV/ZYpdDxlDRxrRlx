@@ -1,4 +1,4 @@
 baseURL = 'https://mdydwrx.yojnaportal.com/'
 languageCode = 'en-us'
-title = 'My New Hugo Site'
+title = 'Tools Portal'
 theme = "yp-theme"

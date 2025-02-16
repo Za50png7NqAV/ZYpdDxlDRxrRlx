@@ -1,0 +1,316 @@
+body {
+    margin: 0;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+}
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 800px;
+    position: relative;
+}
+
+.modal-header {
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.modal-header h2 {
+    color: #4a0e78;
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.modal-header p {
+    color: #666;
+    font-size: 1rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+textarea {
+    width: 100%;
+    min-height: 200px;
+    padding: 1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 14px;
+    line-height: 1.5;
+    resize: vertical;
+    transition: border-color 0.3s ease;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: #4a0e78;
+    box-shadow: 0 0 0 3px rgba(74, 14, 120, 0.1);
+}
+
+.button-container {
+    position: fixed;
+   top: 400px ;
+    right: 30%;
+    display: flex;
+    gap: 12px;
+    z-index: 900;
+}
+
+.action-button {
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.primary-button {
+    background-color: #4a0e78;
+    color: white;
+}
+
+.secondary-button {
+    background-color: #f8f9fa;
+    color: #4a0e78;
+    border: 1px solid #4a0e78;
+}
+
+.action-button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.primary-button:hover {
+    background-color: #3a0b5e;
+}
+
+.secondary-button:hover {
+    background-color: #e9ecef;
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+    padding: 5px;
+    line-height: 1;
+}
+
+.modal-close:hover {
+    color: #4a0e78;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    gap: 10px;
+}
+
+.card {
+    flex: 1;
+
+    width: 350px;
+    min-height: 250px;
+    background: white;
+    border: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    background-color: #daf80196;
+    padding: 5px;
+    color-red;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-logo {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.header-logo img {
+    width: 100%;
+    height: auto;
+}
+
+.title {
+    color: #800080;
+    font-size: 11px;
+    font-weight: bold;
+    text-align: center;
+    flex: 1;
+}
+
+.card-content {
+    padding: 10px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.profile-section {
+    display: flex;
+    gap: 10px;
+}
+
+.profile-photo {
+    width: 50px;
+    height: 60px;
+}
+
+.info-section {
+    flex: 1;
+    font-size: 11px;
+
+}
+
+.info-line {
+    margin: 5px 0;
+   
+    font-size: 11px;
+}
+
+.card-number-section {
+    display: flex;
+    justify-content: right;
+align-items: center;
+margin-top: 1px;
+gap: 150px;
+}
+}
+
+.card-number {
+    color: #800080;
+  line-height:0.2;
+  font-size:8px;
+    
+}
+
+.qr-code {
+    width: 40px;
+    height: 40px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1px;
+    font-size: 9px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 4px;
+    text-align: left;
+}
+
+th {
+    background-color:  #fad9eba3;
+}
+
+.footer {
+    background-color: #FDB813;
+    padding: 5px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 10px;
+}
+
+.hindi-text {
+    text-align: center;
+    padding: 5px;
+    background-color: #FDB813;
+    font-weight: bold;
+    font-size: 10px;
+}
+
+.print-date {
+    font-size: 10px;
+    color: #666;
+}
+
+
+
+.Patrata {
+    width: 40px; /* Set width to 40px */
+    height: 40px; /* Set height to 40px */
+    display: flex; /* Use flexbox for centering */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    border: 1px solid #000; /* Optional: add a border for visibility */
+    font-size: 16px; /* Adjust font size as needed */
+    background-color:  #fada0196; /* Optional: background color */
+    font-size: 11px;
+    border-radius: 50%;
+    font-weight: bold;
+}
+
+
+
+
+
+ @media print {
+    body {
+        background-color: white;
+    }
+    .button-container, .modal-overlay {
+        display: none !important;
+    }
+}
+
+/* Loading spinner */
+.loading-spinner {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #4a0e78;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    z-index: 1100;
+}
+
+@keyframes spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
