@@ -335,16 +335,14 @@
 
 
 <script src="\script\farmer.js"></script>
-
-
-  <script>
+<script>
     
     document.getElementById("saveButton").addEventListener("click", function () {
         const cardContainer = document.getElementById("cardContainer");
         html2canvas(cardContainer, { scale: 2 }).then((canvas) => {
             
             const link = document.createElement("a");
-            link.download = "kisan-card.png"; 
+            link.download = "Download-card.png"; 
             link.href = canvas.toDataURL("image/png"); 
             link.click(); 
         });

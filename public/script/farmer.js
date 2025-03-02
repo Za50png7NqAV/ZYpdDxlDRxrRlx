@@ -1,3 +1,4 @@
+
 function formatCardNumber(number) {
     return number.replace(/(\d{4})(?=\d)/g, '$1 ');
 }
@@ -88,8 +89,5 @@ document.getElementById('printButton').addEventListener('click', function () {
             link.href = canvas.toDataURL("image/png");
             link.click();
         });
-
-
-   
 
     }
