@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="hi">
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/tools/birthinvitation.css ">
@@ -140,9 +140,9 @@
     </div>
 
     <script>
-       // Function to preview the invitation
+       
 function previewInvitation() {
-    // Update preview with form values
+    
     document.getElementById('preview-invitee').textContent = document.getElementById('invitee').value || "_______________";
     document.getElementById('preview-parents').textContent = document.getElementById('parents').value;
     document.getElementById('preview-birthdayNum').textContent = document.getElementById('birthdayNum').value;
@@ -154,7 +154,7 @@ function previewInvitation() {
     document.getElementById('preview-address').textContent = document.getElementById('address').value;
     document.getElementById('preview-hosts').innerHTML = document.getElementById('hosts').value.replace(/\n/g, '<br>');
     
-    // Handle child photo
+    
     let photoInput = document.getElementById('child-photo');
     if (photoInput.files && photoInput.files[0]) {
         let reader = new FileReader();
@@ -167,31 +167,31 @@ function previewInvitation() {
     document.getElementById('form-section').style.display = 'none';
     document.getElementById('preview-container').style.display = 'block';
     
-    // Scroll to preview
+    
     document.getElementById('preview-container').scrollIntoView({ behavior: 'smooth' });
 }
 
         
-        // Function to go back to the form
+        
         function goBackToForm() {
             document.getElementById('form-section').style.display = 'block';
             document.getElementById('preview-container').style.display = 'none';
             
-            // Scroll to form
+            
             document.getElementById('form-section').scrollIntoView({ behavior: 'smooth' });
         }
         
-        // Function to download the invitation as HTML
+        
         function downloadInvitation() {
-            // First update the preview if not already visible
+            
             if (document.getElementById('preview-container').style.display !== 'block') {
                 previewInvitation();
             }
             
-            // Create a clone of the preview card
+            
             let cardClone = document.querySelector('.card').cloneNode(true);
             
-            // Create a new HTML document
+            
             let htmlContent = `
             <!DOCTYPE html>
             <html lang="hi">
@@ -209,32 +209,32 @@ function previewInvitation() {
             </html>
             `;
             
-            // Create a blob with the HTML content
+            
             let blob = new Blob([htmlContent], { type: 'text/html' });
             
-            // Create a download link
+            
             let a = document.createElement('a');
             a.href = URL.createObjectURL(blob);
             a.download = 'जन्मदिन_निमंत्रण.html';
             
-            // Trigger the download
+            
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
         }
         
-        // Function to download the invitation as PNG
-      // Function to download the invitation as PNG
+        
+      
 function downloadAsPNG() {
-    const element = document.getElementById('invitation-card'); // Invitation card को target करें
+    const element = document.getElementById('invitation-card'); 
     html2canvas(element, {
-        useCORS: true, // Cross-Origin इमेज को allow करने के लिए
-        scale: 2, // High resolution के लिए scale बढ़ाएँ
+        useCORS: true, 
+        scale: 2, 
         logging: true
     }).then(canvas => {
         const link = document.createElement('a');
         link.download = 'birthday-invitation.png';
-        link.href = canvas.toDataURL('image/png'); // PNG format में convert करें
+        link.href = canvas.toDataURL('image/png'); 
         link.click();
     }).catch(error => {
         console.error('Error generating PNG:', error);
@@ -242,14 +242,14 @@ function downloadAsPNG() {
 }
 
         
-        // Function to print the invitation
+        
         function printInvitation() {
-            // First update the preview if not already visible
+            
             if (document.getElementById('preview-container').style.display !== 'block') {
                 previewInvitation();
             }
             
-            // Print the page
+            
             window.print();
         }
     </script>

@@ -1,268 +1,270 @@
-font-family: 'Poppins', Arial, sans-serif;
-        background-color: #fdf4f5;
-        margin: 0;
-        padding: 20px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+ /* Base Styling */
+ body {
+    font-family: 'Poppins', Arial, sans-serif;
+    background-color: #fdf4f5;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
-    /* Container Styling */
-    .container {
-        width: 100%;
-        max-width: 900px;
-        margin: 0 auto;
-    }
+/* Container Styling */
+.container {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+}
 
-    /* Form Section Styling */
-    .form-section {
-        background: linear-gradient(135deg, #ffdde1 0%, #ee9ca7 100%);
-        border-radius: 20px;
-        padding: 30px;
-        margin-bottom: 20px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        transition: transform 0.3s ease;
-    }
+/* Form Section Styling */
+.form-section {
+    background: linear-gradient(135deg, #ffdde1 0%, #ee9ca7 100%);
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
 
-    .form-section:hover {
-        transform: translateY(-5px);
-    }
+.form-section:hover {
+    transform: translateY(-5px);
+}
 
-    .form-group {
-        margin-bottom: 20px;
-    }
+.form-group {
+    margin-bottom: 20px;
+}
 
-    label {
-        display: block;
-        margin-bottom: 8px;
-        font-weight: 600;
-        color: #333;
-    }
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333;
+}
 
-    select, input, textarea {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        font-size: 16px;
-        transition: border-color 0.3s;
-    }
+select, input, textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
 
-    input:focus, textarea:focus, select:focus {
-        border-color: #ff6699;
-        outline: none;
-    }
+input:focus, textarea:focus, select:focus {
+    border-color: #ff6699;
+    outline: none;
+}
 
-    /* Button Styling */
-    .button-group {
-        display: flex;
-        gap: 12px;
-        margin-top: 20px;
-        justify-content: center;
-        flex-wrap: wrap;
-    }
+/* Button Styling */
+.button-group {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
 
-    button {
-        padding: 12px 24px;
-        border: none;
-        border-radius: 30px;
-        font-size: 16px;
-        font-weight: bold;
-        cursor: pointer;
-        transition: background-color 0.3s, transform 0.2s;
-        color: #fff;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    }
+button {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    color: #fff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
 
-    button:hover {
-        transform: scale(1.05);
-    }
+button:hover {
+    transform: scale(1.05);
+}
 
-    .preview-btn {
-        background-color: #ff6699;
-    }
+.preview-btn {
+    background-color: #ff6699;
+}
 
-    .download-png-btn, .download-btn {
-        background-color: #ff6699;
-    }
+.download-png-btn, .download-btn {
+    background-color: #ff6699;
+}
 
-    .print-btn {
-        background-color: #ff9800;
-    }
+.print-btn {
+    background-color: #ff9800;
+}
 
-    .back-btn {
-        background-color: #f44336;
-    }
+.back-btn {
+    background-color: #f44336;
+}
 
-    /* Card Styling */
-    .card {
-        width: 650px;
-        max-width: 650px;
-        background: linear-gradient(to bottom, #ffcc66, #ffcc, #ffcc99 );
-        border: 4px double #ff6699;
-        border-radius: 20px;
-        padding: 30px;
-        box-shadow: 0 6px 20px rgba(0,0,0,0.2);
-        text-align: center;
-        position: relative;
-        overflow: hidden;
-        margin: 0 auto;
-        transition: transform 0.3s ease;
-    }
+/* Card Styling */
+.card {
+    width: 650px;
+    max-width: 650px;
+    background: linear-gradient(to bottom, #ffcc66, #ffcc, #ffcc99 );
+    border: 4px double #ff6699;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+    transition: transform 0.3s ease;
+}
 
-    .card:hover {
-        transform: translateY(-5px);
-    }
+.card:hover {
+    transform: translateY(-5px);
+}
 
-    .header {
-        color: #ff6699;
-        font-size: 12px;
-        font-weight: bold;
-    }
+.header {
+    color: #ff6699;
+    font-size: 12px;
+    font-weight: bold;
+}
 
-    .invitation-title {
-        font-size: 40px;
-        width: 200px;
-        color: #ff8c00;
-        font-weight: bold;
-        font-family: 'Dancing Script', cursive;
-        margin: 0px 0;
-        text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
-    }
+.invitation-title {
+    font-size: 40px;
+    width: 200px;
+    color: #ff8c00;
+    font-weight: bold;
+    font-family: 'Dancing Script', cursive;
+    margin: 0px 0;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
 
-    .child-name {
-        font-size: 28px;
-        color: #ff6600;
-        margin: 15px 0;
-        font-family: 'Poppins', sans-serif;
-        font-weight: 700;
-    }
+.child-name {
+    font-size: 28px;
+    color: #ff6600;
+    margin: 15px 0;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+}
 
-    .birthday-text {
-        font-size: 30px;
-        color: #9932cc;
-        font-weight: bold;
-        margin: 15px 0;
-        background-color: #ffefd5;
-        padding: 8px 15px;
-        border-radius: 15px;
-        display: inline-block;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    }
+.birthday-text {
+    font-size: 30px;
+    color: #9932cc;
+    font-weight: bold;
+    margin: 15px 0;
+    background-color: #ffefd5;
+    padding: 8px 15px;
+    border-radius: 15px;
+    display: inline-block;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
 
-    .details {
-        margin: 2px 0;
-        line-height: 1.8;
-        font-size: 30px;
-        font-weight: bold;
-        color: black;
-      font-style: italic;
-    }
+.details {
+    margin: 2px 0;
+    line-height: 1.8;
+    font-size: 30px;
+    font-weight: bold;
+    color: black;
+  font-style: italic;
+}
 
-    .time-venue {
-        background-color: #fff8dc;
-        padding: 15px;
-        border-radius: 12px;
-        font-size: 20px;
-        margin: 15px 0;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
+.time-venue {
+    background-color: #fff8dc;
+    padding: 15px;
+    border-radius: 12px;
+    font-size: 20px;
+    margin: 15px 0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
 
-    .footer {
-        margin-top: 20px;
-        font-size: 16px;
-        font-weight: 600;
-        color: #555;
-        border-radius: 5px;
-        border: 1px dashed white;
-    }
+.footer {
+    margin-top: 20px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #555;
+    border-radius: 5px;
+    border: 1px dashed white;
+}
 
-    /* Image Styling */
-    .child-photo {
-        width: 180px;
-        height: 180px;
-        border-radius: 50%;
-        object-fit: cover;
-        border: 5px solid #ffb6c1;
-        margin: 20px auto;
-        display: block;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    }
+/* Image Styling */
+.child-photo {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #ffb6c1;
+    margin: 20px auto;
+    display: block;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
 
-   .balloon-right, .mickey {
-        position: absolute;
-        width: 100px;
-        height: 120px;
-        opacity: 0.8;
-        transition: transform 0.3s;
-    }
+.balloon-right, .mickey {
+    position: absolute;
+    width: 100px;
+    height: 120px;
+    opacity: 0.8;
+    transition: transform 0.3s;
+}
 
-    .balloon-left:hover, .balloon-right:hover, .mickey:hover, .cake:hover {
-        transform: scale(1.1);
-    }
+.balloon-left:hover, .balloon-right:hover, .mickey:hover, .cake:hover {
+    transform: scale(1.1);
+}
 .cake2, .cake {
-        position: absolute;
-        width: 200px;
-        height: 300px;
-        opacity: 1;
-        transition: transform 0.3s;
+    position: absolute;
+    width: 200px;
+    height: 300px;
+    opacity: 1;
+    transition: transform 0.3s;
+}
+
+.balloon-left {
+    position: absolute;
+    width: 200px;
+    height: 120px;
+    opacity: 0.8;
+    transition: transform 0.3s;
+}
+
+
+
+.balloon-left {
+    top: 20px;
+    left: 10px;
+}
+
+.balloon-right {
+    top: 20px;
+    right: 10px;
+}
+
+.mickey {
+    top: 15px;
+    right: 20px;
+}
+
+.cake {
+    bottom: 260px;
+    right: 30px;
+}
+  .cake2 {
+    bottom: 260px;
+    left: 30px;
+}
+#preview-container {
+        display: none;
+        margin-top: 30px;
+    }
+/* Print Style */
+@media print {
+    .form-section, .button-group {
+        display: none;
     }
 
-  .balloon-left {
-        position: absolute;
-        width: 200px;
-        height: 120px;
-        opacity: 0.8;
-        transition: transform 0.3s;
+    #preview-container {
+        display: block !important;
     }
 
-
-
-    .balloon-left {
-        top: 20px;
-        left: 10px;
+    body {
+        background-color: #fff;
+        margin: 0;
+        padding: 0;
     }
 
-    .balloon-right {
-        top: 20px;
-        right: 10px;
+    .card {
+        border: 2px solid #ff6699;
+        box-shadow: none;
     }
-
-    .mickey {
-        top: 15px;
-        right: 20px;
-    }
-
-    .cake {
-        bottom: 260px;
-        right: 30px;
-    }
-      .cake2 {
-        bottom: 260px;
-        left: 30px;
-    }
- #preview-container {
-            display: none;
-            margin-top: 30px;
-        }
-    /* Print Style */
-    @media print {
-        .form-section, .button-group {
-            display: none;
-        }
-
-        #preview-container {
-            display: block !important;
-        }
-
-        body {
-            background-color: #fff;
-            margin: 0;
-            padding: 0;
-        }
-
-        .card {
-            border: 2px solid #ff6699;
-            box-shadow: none;
-        }
-    }
+}
