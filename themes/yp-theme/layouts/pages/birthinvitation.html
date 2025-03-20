@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> जन्मदिन निमंत्रण</title>
+    <link rel="stylesheet" href="/css/tools/birthinvitation.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="/script/required/UHYcMGgARZ.js"></script>
+    <style>
+  
+
+
+</head>
+<body>
+    <div class="container">
+        <h1 style="text-align: center; color: #ff6699;">जन्मदिन निमंत्रण </h1>
+        
+        <div class="form-section" id="form-section">
+            <form id="invitation-form">
+                <div class="form-group">
+                    <label for="invitee">आमंत्रित व्यक्ति का नाम:</label>
+                    <input type="text" id="invitee" name="invitee" placeholder="श्री/श्रीमती _______________">
+                </div>
+
+                  <div class="form-group">
+                    <label for="birthdayNum"> जन्मदिन संख्या </label>
+                    <input type="text" id="birthdayNum" name="birthdayNum" placeholder="प्रथम जन्मदिन"  value="प्रथम जन्मदिन">
+                </div>
+                
+                <div class="form-group">
+                    <label for="parents">माता-पिता का नाम:</label>
+                    <input type="text" id="parents" name="parents" placeholder="माता-पिता का नाम:" >
+                </div>
+              <div class="form-group">
+    <label for="child-for">माता-पिता से संबंध</label>
+    <select id="child-for" name="child-for">
+         <option value="का पुत्र">पुत्र</option>
+        <option value="की पुत्री">पुत्री</option>
+    </select>
+</div>
+               <div class="form-group">
+    <label for="child-name">बच्चे का नाम:</label>
+    <input type="text" id="child-name" name="child-name" placeholder="चि. आश्विक/कु. आश्विक" >
+</div>
+              <div class="form-group">
+    <label for="date">तिथि:</label>
+    <input type="date" id="date" name="date" onchange="updateDateFormat()">
+</div>
+
+<div class="form-group" style="display: none;">
+    <label for="formatted-date">फ़ॉर्मेटेड तिथि:</label>
+    <input type="text" id="formatted-date" name="formatted-date" placeholder="सोमवार दि. 20 नवम्बर 2023" readonly>
+</div>
+                
+                <div class="form-group">
+                    <label for="time">समय:</label>
+                    <input type="text" id="time" name="time" placeholder="शाम 7 से आपके आगमनतक" value="शाम 7 से आपके आगमनतक">
+                </div>
+                
+                <div class="form-group">
+                    <label for="venue">स्थल:</label>
+                    <textarea id="venue" name="venue" rows="2" placeholder="कार्यस्थल का पता" > </textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="address">पता:</label>
+                    <textarea id="address" name="address" rows="2" placeholder=" पता/मोबाइल नंबर"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="hosts">निमंत्रक:</label>
+                    <textarea id="hosts" name="hosts" rows="3" placeholder="श्री. मोहन लाल सौ. रानु / मदन लाल एवं समस्त परिवार"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="child-photo">बच्चे की तस्वीर:</label>
+                    <input type="file" id="child-photo" name="child-photo" class="file-input" accept="image/*">
+                </div>
+                
+                <div class="button-group">
+                    <button type="button" class="preview-btn" onclick="previewInvitation()"> Generate Invitation</button>
+            
+                    <button type="button" class="print-btn" onclick="printInvitation()">प्रिंट करें</button>
+                </div>
+            </form>
+        </div>
+        
+        <div id="preview-container">
+            <div class="card" id="invitation-card">
+                <div class="header">
+                    <h2>|| श्री गणेशाय नमः ||</h2>
+                </div>
+                <img class="balloon-left" src="https://ia801301.us.archive.org/21/items/happy-birth-day/Happy%20Birth%20day.png">
+                
+ <img class="balloon-right"src="https://ia600107.us.archive.org/23/items/cack_20250320/Cack.png">
+
+
+                
+                <div > <img class="invitation-title" src="https://ia600703.us.archive.org/27/items/aamantran_202503/Aamantran.png"></div>
+                
+                <div class="details">
+                   श्री/श्रीमतीः<span id="preview-invitee"> ----------------------</span><br>
+                    आपको सूचित करते हुए हर्ष हो रहा है की<br>
+                    (<span id="preview-parents">----------------------</span>) इन<span id="preview-child-for"></span>
+                </div>
+                <img id="preview-child-photo" src="/api/placeholder/180/180" alt="बच्चे की तस्वीर" class="child-photo">
+                <div class="child-name" id="preview-child-name">चि. आश्विक</div>
+                <div class="birthday-text"><span id="preview-birthdayNum"> प्रथम जन्मदिन</span></div>
+                
+                <div class="details">
+                    <span id="preview-formatted-date"></span> को आयोजित किया है<br>
+                    इस अवसर पर आप सपरिवार सादर आमंत्रित है
+                </div>
+                
+                <div class="time-venue">
+                    <strong>समय -</strong> <span id="preview-time">शाम 7 से आपके आगमनतक</span><br>
+                    <strong>स्थल -</strong> <span id="preview-venue">---------</span><br>
+                    <span id="preview-address">---------------</span>
+                </div>
+                
+ <img class="cake" src="https://ia600202.us.archive.org/6/items/ballon_202503/ballon.png">
+ <img class="cake2" src="https://ia600202.us.archive.org/6/items/ballon_202503/ballon.png">
+                <div class="footer">
+                    <strong>निमंत्रक</strong><br>
+                    <span id="preview-hosts">श्री. दिलीप कन्हैयालाल परदेशी<br>
+                    सौ. कुसुम दिलीप परदेशी<br>
+                    एवं समस्त परदेशी परिवार</span>
+                </div>
+            </div>
+            
+            <div class="button-group" style="margin-top: 20px;">
+                <button type="button" class="download-png-btn" onclick="downloadAsPNG()">Download </button>
+            
+                <button type="button" class="print-btn" onclick="printInvitation()">Print</button>
+                <button type="button" class="back-btn" onclick="goBackToForm()">Edit</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+       // Function to preview the invitation
+function previewInvitation() {
+    // Update preview with form values
+    document.getElementById('preview-invitee').textContent = document.getElementById('invitee').value || "_______________";
+    document.getElementById('preview-parents').textContent = document.getElementById('parents').value;
+    document.getElementById('preview-birthdayNum').textContent = document.getElementById('birthdayNum').value;
+    document.getElementById('preview-child-for').textContent = document.getElementById('child-for').value;
+    document.getElementById('preview-child-name').textContent = document.getElementById('child-name').value; 
+    document.getElementById('preview-formatted-date').textContent = document.getElementById('formatted-date').value;
+    document.getElementById('preview-time').textContent = document.getElementById('time').value;
+    document.getElementById('preview-venue').textContent = document.getElementById('venue').value;
+    document.getElementById('preview-address').textContent = document.getElementById('address').value;
+    document.getElementById('preview-hosts').innerHTML = document.getElementById('hosts').value.replace(/\n/g, '<br>');
+    
+    // Handle child photo
+    let photoInput = document.getElementById('child-photo');
+    if (photoInput.files && photoInput.files[0]) {
+        let reader = new FileReader();
+        reader.onload = function(e) {
+            document.getElementById('preview-child-photo').src = e.target.result;
+        }
+        reader.readAsDataURL(photoInput.files[0]);
+    }
+    
+    document.getElementById('form-section').style.display = 'none';
+    document.getElementById('preview-container').style.display = 'block';
+    
+    // Scroll to preview
+    document.getElementById('preview-container').scrollIntoView({ behavior: 'smooth' });
+}
+
+        
+        // Function to go back to the form
+        function goBackToForm() {
+            document.getElementById('form-section').style.display = 'block';
+            document.getElementById('preview-container').style.display = 'none';
+            
+            // Scroll to form
+            document.getElementById('form-section').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // Function to download the invitation as HTML
+        function downloadInvitation() {
+            // First update the preview if not already visible
+            if (document.getElementById('preview-container').style.display !== 'block') {
+                previewInvitation();
+            }
+            
+            // Create a clone of the preview card
+            let cardClone = document.querySelector('.card').cloneNode(true);
+            
+            // Create a new HTML document
+            let htmlContent = `
+            <!DOCTYPE html>
+            <html lang="hi">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>प्रथम जन्मदिन निमंत्रण</title>
+                <style>
+                ${document.querySelector('style').innerHTML}
+                </style>
+            </head>
+            <body style="background-color: white; padding: 20px; display: flex; justify-content: center;">
+                ${cardClone.outerHTML}
+            </body>
+            </html>
+            `;
+            
+            // Create a blob with the HTML content
+            let blob = new Blob([htmlContent], { type: 'text/html' });
+            
+            // Create a download link
+            let a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = 'जन्मदिन_निमंत्रण.html';
+            
+            // Trigger the download
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+        
+        // Function to download the invitation as PNG
+      // Function to download the invitation as PNG
+function downloadAsPNG() {
+    const element = document.getElementById('invitation-card'); // Invitation card को target करें
+    html2canvas(element, {
+        useCORS: true, // Cross-Origin इमेज को allow करने के लिए
+        scale: 2, // High resolution के लिए scale बढ़ाएँ
+        logging: true
+    }).then(canvas => {
+        const link = document.createElement('a');
+        link.download = 'birthday-invitation.png';
+        link.href = canvas.toDataURL('image/png'); // PNG format में convert करें
+        link.click();
+    }).catch(error => {
+        console.error('Error generating PNG:', error);
+    });
+}
+
+        
+        // Function to print the invitation
+        function printInvitation() {
+            // First update the preview if not already visible
+            if (document.getElementById('preview-container').style.display !== 'block') {
+                previewInvitation();
+            }
+            
+            // Print the page
+            window.print();
+        }
+    </script>
+    <script>
+function updatePrefix() {
+    const relation = document.getElementById('child-for').value;
+    const childNameInput = document.getElementById('child-name');
+    
+    if (relation === 'पुत्र') {
+        childNameInput.value = 'चि. ' + childNameInput.value.replace(/^चि\. |^कु\. /, '');
+        childNameInput.placeholder = 'चि. आश्विक';
+    } else if (relation === 'पुत्री') {
+        childNameInput.value = 'कु. ' + childNameInput.value.replace(/^चि\. |^कु\. /, '');
+        childNameInput.placeholder = 'कु. आश्विक';
+    } else {
+        childNameInput.value = childNameInput.value.replace(/^चि\. |^कु\. /, '');
+        childNameInput.placeholder = 'बच्चे का नाम';
+    }
+}
+</script>
+<script>
+const days = ['रविवार', 'सोमवार', 'मंगलवार', 'बुधवार', 'गुरुवार', 'शुक्रवार', 'शनिवार'];
+const months = ['जनवरी', 'फरवरी', 'मार्च', 'अप्रैल', 'मई', 'जून', 'जुलाई', 'अगस्त', 'सितंबर', 'अक्टूबर', 'नवम्बर', 'दिसम्बर'];
+
+function updateDateFormat() {
+    const dateInput = document.getElementById('date').value;
+    if (dateInput) {
+        const date = new Date(dateInput);
+        const day = days[date.getDay()];
+        const dayOfMonth = date.getDate();
+        const month = months[date.getMonth()];
+        const year = date.getFullYear();
+
+        const formattedDate = `${day} दि. ${dayOfMonth} ${month} ${year}`;
+        document.getElementById('formatted-date').value = formattedDate;
+    }
+}
+</script>
+</body>
+</html>
