@@ -136,11 +136,7 @@
     const outputSection = document.getElementById("outputSection");
 
     const allOptions = [
-      "type", "post-type", "AdmissionName",  "PostName", "seo_title",
-      "Department", "OfficialSource", "description", "State", "category",
-      "Notification", "notificationdate", "begindate", "lastdate", "from_date",
-      "to_date", "admitcardName", "ResultName", "pdfName", "eligibility",
-      "Domicile", "imageBanner", "summary", "cssStyles",  "impdates","applyfees", "qualification", "age_limit", "how_to", "documents", "faqs", "shortinfo"
+      "type", "post-type","title", "AdmissionName",  "PostName", "seo_title", "Department", "OfficialSource", "description", "State", "category", "Notification",  "begindate", "lastdate", "admitcardName", "ResultName",  "eligibility", "Domicile", "imageBanner", "summary", "cssStyles", "impdates","applyfees", "qualification", "how_to", "documents", "keywords",   "age_limit","shortinfo", "InnerPost", "faqs", "from_date", "to_date", "notificationdate", "pdfName" 
     ];
 
     const defaultTexts = {
@@ -148,12 +144,13 @@
       category: "Admission",
       OfficialSource: "https://yojnaportal.com/",
       cssStyles: "css/posts/admission.css",
+      InnerPost: " आवदेन । तिथिया | आवश्यकता । महत्तपूर्ण लिंक",
       how_to: `आधिकारिक वेबसाइट पर जाएं:
-Candidate Online Form सेक्शन में जाएं :
-रजिस्ट्रेशन करें:
-आवेदन फॉर्म भरें:
-फीस का भुगतान करें:
-आवेदन पत्र प्रिंट करें:` ,
+      Candidate Online Form सेक्शन में जाएं :
+      रजिस्ट्रेशन करें:
+      आवेदन फॉर्म भरें:
+      फीस का भुगतान करें:
+      आवेदन पत्र प्रिंट करें:` ,
      documents: `शैक्षिणिक योग्यता
      आयु प्रमाणः 10वीं अकसूची
      आधार कार्ड
@@ -161,10 +158,9 @@ Candidate Online Form सेक्शन में जाएं :
      समग्र आई डी
      मोबाइल नंबर एवं ईमेल आई डी
      फोटो एवं हस्ताक्षर`,
-       documents: `पोस्टः
-       आयु सीमाः
-       न्यूनतम योग्यताः
-       अंतिम तिथिः`
+       age_limit: `
+       न्यूनतम आयुः
+       अधिकतम आयुः`
     };
 
     let entries = [];
@@ -237,7 +233,7 @@ Candidate Online Form सेक्शन में जाएं :
 
     function generateOutput() {
       if (entries.length === 0) return alert("No entries added.");
-      const forceArrayTypes = ["impdates", "cssstyles", "age_limit", "importantdates", "applyfees", "qualification", "how_to", "faqs", "documents", "shortinfo"];
+      const forceArrayTypes = ["impdates", "cssstyles", "age_limit", "importantdates", "applyfees", "qualification", "keywords", "how_to", "faqs", "documents", "shortinfo"];
       let result = entries.map(entry => {
         const { type, text } = entry;
         const typeKey = type.toLowerCase();
