@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title> | Tools Portal</title>
+
+    <link rel="stylesheet" href="/css/main.css">
+
+
+      <script src="/js/main.js"></script>
+
+
+</head>
+<body>
+  <header>
+    <h1>Tools Portal</h1>
+
+
+  </header>
+  <main>
+    
+  <h1></h1>
+
+  
+  
+  <time datetime="0001-01-01T00:00:00&#43;00:00">January 1, 1</time>
+
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admission toml Tools Generator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f2f4f8;
+      padding: 30px 15px;
+      margin: 0;
+    }
+    h2, h3 { color: #333; }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    }
+    label { font-weight: 600; margin-top: 10px; display: block; }
+    select, textarea, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      font-size: 16px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    select:focus, textarea:focus {
+      border-color: #1a73e8;
+      outline: none;
+    }
+    button {
+      background-color: #08036a;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover { opacity: 0.8; }
+    .delbtn { width:20px; }
+    .entry {
+      background-color: #f9f9f9;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 15px;
+      position: relative;
+      border-left: 4px solid #1a73e8;
+    }
+    .entry strong { color: #1a73e8; }
+    .entry button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      padding: 4px 10px;
+      background: #e53935;
+      border: none;
+      border-radius: 4px;
+      font-size: 12px;
+      cursor: pointer;
+    }
+    .button-row {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .button-row button {
+      padding: 6px 12px;
+      font-size: 14px;
+      border-radius: 6px;
+      border: none;
+      background-color: red;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+    .button-row button:nth-child(2) { background-color: green; }
+    .output-box {
+      background: #f1f1f1;
+      padding: 15px;
+      margin-top: 15px;
+      border-radius: 8px;
+      white-space: pre-wrap;
+      font-family: monospace;
+      color: #333;
+    }
+    .hidden { display: none; }
+    @media (max-width: 600px) {
+      .container { padding: 20px 15px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>YP Admission Toml Tools</h2>
+
+    <label for="typeSelector">Select Type</label>
+    <select id="typeSelector"></select>
+
+    <div id="formArea" class="hidden">
+      <label id="selectedLabel"></label>
+      <textarea id="inputText" rows="4" placeholder="Enter details here..."></textarea>
+      <div class="button-row">
+        <button onclick="clearTextarea()">Clear</button>
+        <button onclick="addEntry()">+Add</button>
+      </div>
+    </div>
+
+    <h3>Added Entries</h3>
+    <div id="entriesContainer"></div>
+
+    <div class="button-row">
+      <button onclick="deleteAllEntries()">🗑 Delete All</button>
+      <button onclick="generateOutput()">✅ Generate</button>
+    </div>
+
+    <div id="outputSection" class="hidden">
+      <h3>Output</h3>
+      <div id="outputBox" class="output-box"></div>
+      <button onclick="copyOutput()">Copy</button>
+    </div>
+  </div>
+
+  <script>
+    const STORAGE_KEY = "yp_admission_entries";
+    const typeSelector = document.getElementById("typeSelector");
+    const formArea = document.getElementById("formArea");
+    const selectedLabel = document.getElementById("selectedLabel");
+    const inputText = document.getElementById("inputText");
+    const entriesContainer = document.getElementById("entriesContainer");
+    const outputBox = document.getElementById("outputBox");
+    const outputSection = document.getElementById("outputSection");
+
+    const allOptions = [
+      "type", "post-type", "AdmissionName",  "PostName", "seo_title",
+      "Department", "OfficialSource", "description", "State", "category",
+      "Notification", "notificationdate", "begindate", "lastdate", "from_date",
+      "to_date", "admitcardName", "ResultName", "pdfName", "eligibility",
+      "Domicile", "imageBanner", "summary", "cssStyles",  "impdates","applyfees", "qualification", "age_limit", "how_to", "documents", "faqs", "shortinfo"
+    ];
+
+    const defaultTexts = {
+      type: "admission",
+      category: "Admission",
+      OfficialSource: "https://yojnaportal.com/",
+      cssStyles: "css/posts/admission.css",
+      how_to: `आधिकारिक वेबसाइट पर जाएं:
+Candidate Online Form सेक्शन में जाएं :
+रजिस्ट्रेशन करें:
+आवेदन फॉर्म भरें:
+फीस का भुगतान करें:
+आवेदन पत्र प्रिंट करें:` ,
+     documents: `शैक्षिणिक योग्यता
+     आयु प्रमाणः 10वीं अकसूची
+     आधार कार्ड
+     फोटो एवं हस्ताक्षर
+     समग्र आई डी
+     मोबाइल नंबर एवं ईमेल आई डी
+     फोटो एवं हस्ताक्षर`,
+       documents: `पोस्टः
+       आयु सीमाः
+       न्यूनतम योग्यताः
+       अंतिम तिथिः`
+    };
+
+    let entries = [];
+
+    window.onload = () => {
+      loadEntriesFromStorage();
+      populateDropdown();
+    };
+
+    function populateDropdown() {
+      typeSelector.innerHTML = "";
+      const available = allOptions.filter(opt => !entries.find(e => e.type === opt));
+      available.forEach(opt => {
+        const option = document.createElement("option");
+        option.value = opt;
+        option.textContent = opt;
+        typeSelector.appendChild(option);
+      });
+      if (available.length > 0) {
+        typeSelector.selectedIndex = 0;
+        showForm();
+      } else {
+        formArea.classList.add("hidden");
+      }
+    }
+
+    function showForm() {
+      const selected = typeSelector.value;
+      selectedLabel.textContent = "Selected: " + selected;
+      inputText.value = defaultTexts[selected] || "";
+      formArea.classList.remove("hidden");
+    }
+
+    typeSelector.addEventListener("change", showForm);
+
+    function addEntry() {
+      const type = typeSelector.value;
+      const text = inputText.value.trim();
+      if (!text) return alert("Please enter some text.");
+      if (!type) return alert("Please select a type.");
+      entries.push({ type, text });
+      saveEntriesToStorage();
+
+      const entryDiv = document.createElement("div");
+      entryDiv.className = "entry";
+      entryDiv.innerHTML = `
+        <strong>${type}</strong> = "${text}"
+        <button class="delbtn" onclick="deleteEntry(this, '${type}')">X</button>
+      `;
+      entriesContainer.appendChild(entryDiv);
+      populateDropdown();
+    }
+
+    function deleteEntry(btn, type) {
+      entries = entries.filter(e => e.type !== type);
+      saveEntriesToStorage();
+      btn.parentElement.remove();
+      populateDropdown();
+    }
+
+    function deleteAllEntries() {
+      if (confirm("Are you sure you want to delete all entries?")) {
+        entries = [];
+        localStorage.removeItem(STORAGE_KEY);
+        entriesContainer.innerHTML = "";
+        populateDropdown();
+        outputSection.classList.add("hidden");
+      }
+    }
+
+    function generateOutput() {
+      if (entries.length === 0) return alert("No entries added.");
+      const forceArrayTypes = ["impdates", "cssstyles", "age_limit", "importantdates", "applyfees", "qualification", "how_to", "faqs", "documents", "shortinfo"];
+      let result = entries.map(entry => {
+        const { type, text } = entry;
+        const typeKey = type.toLowerCase();
+        const isForceArray = forceArrayTypes.includes(typeKey);
+        const isMultiLine = isForceArray || text.includes("\n") || text.trim() === "///";
+        if (isMultiLine) {
+          const lines = text
+            .split("\n")
+            .map(line => line.trim())
+            .filter(line => line !== "")
+            .map(line => `"${line}"`);
+          return `${type} = [\n  ${lines.join(",\n  ")}\n]`;
+        } else {
+          return `${type} = "${text}"`;
+        }
+      }).join("\n\n");
+      outputBox.textContent = result;
+      outputSection.classList.remove("hidden");
+    }
+
+    function copyOutput() {
+      navigator.clipboard.writeText(outputBox.textContent).then(() => {
+        alert("Copied to clipboard!");
+      });
+    }
+
+    function clearTextarea() {
+      inputText.value = "";
+    }
+
+    function saveEntriesToStorage() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(entries));
+    }
+
+    function loadEntriesFromStorage() {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        entries = JSON.parse(saved);
+        entries.forEach(({ type, text }) => {
+          const entryDiv = document.createElement("div");
+          entryDiv.className = "entry";
+          entryDiv.innerHTML = `
+            <strong>${type}</strong> = "${text}"
+            <button class="delbtn" onclick="deleteEntry(this, '${type}')">X</button>
+          `;
+          entriesContainer.appendChild(entryDiv);
+        });
+      }
+    }
+  </script>
+</body>
+</html>
+
+  
+
+
+  </main>
+  <footer>
+    <p>Copyright 2025. All rights reserved.</p>
+
+  </footer>
+</body>
+</html>

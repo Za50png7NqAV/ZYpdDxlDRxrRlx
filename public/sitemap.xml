@@ -23,10 +23,10 @@
     <loc>http://localhost:1313/card/</loc>
     <lastmod>2024-11-08T19:23:23+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/farmer-id/</loc>
+    <loc>http://localhost:1313/card/farmer-id-6epnjoxdzi/</loc>
     <lastmod>2024-11-08T19:23:23+05:30</lastmod>
   </url><url>
-    <loc>http://localhost:1313/card/farmer-id-6epnjoxdzi/</loc>
+    <loc>http://localhost:1313/farmer-id/</loc>
     <lastmod>2024-11-08T19:23:23+05:30</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/blue/</loc>
@@ -59,6 +59,10 @@
     <loc>http://localhost:1313/</loc>
     <lastmod>2023-01-01T08:00:00-07:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/farmgen/admission/</loc>
+  </url><url>
     <loc>http://localhost:1313/categories/</loc>
+  </url><url>
+    <loc>http://localhost:1313/farmgen/</loc>
   </url>
 </urlset>
