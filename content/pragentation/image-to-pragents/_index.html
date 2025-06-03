@@ -79,14 +79,220 @@
     .presentation-img.active {
       opacity: 1;
     }
-    .fade { animation: fadeIn 1s forwards; }
-    @keyframes fadeIn { to { opacity: 1; } }
+   /* Existing animations */
+.fade { opacity: 0; animation: fadeIn 1s forwards; }
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
 
-    .slide { transform: translateX(-100%); animation: slideIn 1s forwards; }
-    @keyframes slideIn { to { transform: translateX(0); } }
+.slide { transform: translateX(-100%); animation: slideIn 1s forwards; }
+@keyframes slideIn {
+  to { transform: translateX(0); }
+}
 
-    .zoom { transform: scale(0); animation: zoomIn 1s forwards; }
-    @keyframes zoomIn { to { transform: scale(1); } }
+.zoom { transform: scale(0); animation: zoomIn 1s forwards; }
+@keyframes zoomIn {
+  to { transform: scale(1); }
+}
+
+.rotate { transform: rotate(-180deg); animation: rotateIn 1s forwards; }
+@keyframes rotateIn {
+  to { transform: rotate(0); }
+}
+
+/* Additional entrance animations */
+.slide-up { transform: translateY(100%); animation: slideUp 1s forwards; }
+@keyframes slideUp {
+  to { transform: translateY(0); }
+}
+
+.slide-down { transform: translateY(-100%); animation: slideDown 1s forwards; }
+@keyframes slideDown {
+  to { transform: translateY(0); }
+}
+
+.slide-right { transform: translateX(100%); animation: slideRight 1s forwards; }
+@keyframes slideRight {
+  to { transform: translateX(0); }
+}
+
+.bounce-in { transform: scale(0.3); opacity: 0; animation: bounceIn 0.8s forwards; }
+@keyframes bounceIn {
+  0% { transform: scale(0.3); opacity: 0; }
+  50% { transform: scale(1.05); opacity: 1; }
+  70% { transform: scale(0.9); }
+  100% { transform: scale(1); }
+}
+
+.flip-in { transform: rotateY(-90deg); opacity: 0; animation: flipIn 0.8s forwards; }
+@keyframes flipIn {
+  to { transform: rotateY(0); opacity: 1; }
+}
+
+.swing-in { transform: rotateZ(-15deg); transform-origin: top center; animation: swingIn 1s forwards; }
+@keyframes swingIn {
+  20% { transform: rotateZ(15deg); }
+  40% { transform: rotateZ(-10deg); }
+  60% { transform: rotateZ(5deg); }
+  80% { transform: rotateZ(-2deg); }
+  100% { transform: rotateZ(0); }
+}
+
+.rubber-band { animation: rubberBand 1s forwards; }
+@keyframes rubberBand {
+  0% { transform: scale(1); }
+  30% { transform: scaleX(1.25) scaleY(0.75); }
+  40% { transform: scaleX(0.75) scaleY(1.25); }
+  50% { transform: scaleX(1.15) scaleY(0.85); }
+  65% { transform: scaleX(0.95) scaleY(1.05); }
+  75% { transform: scaleX(1.05) scaleY(0.95); }
+  100% { transform: scale(1); }
+}
+
+.jello { animation: jello 1s forwards; }
+@keyframes jello {
+  0%, 11.1%, 100% { transform: translate3d(0, 0, 0); }
+  22.2% { transform: skewX(-12.5deg) skewY(-12.5deg); }
+  33.3% { transform: skewX(6.25deg) skewY(6.25deg); }
+  44.4% { transform: skewX(-3.125deg) skewY(-3.125deg); }
+  55.5% { transform: skewX(1.5625deg) skewY(1.5625deg); }
+  66.6% { transform: skewX(-0.78125deg) skewY(-0.78125deg); }
+  77.7% { transform: skewX(0.390625deg) skewY(0.390625deg); }
+  88.8% { transform: skewX(-0.1953125deg) skewY(-0.1953125deg); }
+}
+
+/* Attention seekers */
+.pulse { animation: pulse 2s infinite; }
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.shake { animation: shake 0.8s infinite; }
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+  20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+.wobble { animation: wobble 1s infinite; }
+@keyframes wobble {
+  0% { transform: translateX(0); }
+  15% { transform: translateX(-25px) rotate(-5deg); }
+  30% { transform: translateX(20px) rotate(3deg); }
+  45% { transform: translateX(-15px) rotate(-3deg); }
+  60% { transform: translateX(10px) rotate(2deg); }
+  75% { transform: translateX(-5px) rotate(-1deg); }
+  100% { transform: translateX(0); }
+}
+
+.heartbeat { animation: heartbeat 1.5s infinite; }
+@keyframes heartbeat {
+  0% { transform: scale(1); }
+  14% { transform: scale(1.3); }
+  28% { transform: scale(1); }
+  42% { transform: scale(1.3); }
+  70% { transform: scale(1); }
+}
+
+/* Flipping animations */
+.flip-x { animation: flipX 1s forwards; }
+@keyframes flipX {
+  0% { transform: perspective(400px) rotateX(90deg); opacity: 0; }
+  40% { transform: perspective(400px) rotateX(-20deg); }
+  60% { transform: perspective(400px) rotateX(10deg); opacity: 1; }
+  80% { transform: perspective(400px) rotateX(-5deg); }
+  100% { transform: perspective(400px) rotateX(0deg); opacity: 1; }
+}
+
+.flip-y { animation: flipY 1s forwards; }
+@keyframes flipY {
+  0% { transform: perspective(400px) rotateY(90deg); opacity: 0; }
+  40% { transform: perspective(400px) rotateY(-20deg); }
+  60% { transform: perspective(400px) rotateY(10deg); opacity: 1; }
+  80% { transform: perspective(400px) rotateY(-5deg); }
+  100% { transform: perspective(400px) rotateY(0deg); opacity: 1; }
+}
+
+/* Rolling animations */
+.roll-in { transform: translateX(-100%) rotate(-120deg); animation: rollIn 1s forwards; }
+@keyframes rollIn {
+  100% { transform: translateX(0) rotate(0deg); }
+}
+
+.roll-out { animation: rollOut 1s forwards; }
+@keyframes rollOut {
+  100% { transform: translateX(100%) rotate(120deg); opacity: 0; }
+}
+
+/* Light speed animations */
+.light-speed-in { transform: translateX(100%) skewX(-30deg); opacity: 0; animation: lightSpeedIn 1s forwards; }
+@keyframes lightSpeedIn {
+  60% { transform: translateX(-20%) skewX(20deg); opacity: 1; }
+  80% { transform: translateX(0) skewX(-5deg); }
+  100% { transform: translateX(0) skewX(0); opacity: 1; }
+}
+
+/* Hinge animation */
+.hinge { animation: hinge 2s forwards; }
+@keyframes hinge {
+  0% { transform-origin: top left; }
+  20%, 60% { transform: rotate(80deg); transform-origin: top left; }
+  40%, 80% { transform: rotate(60deg); transform-origin: top left; opacity: 1; }
+  100% { transform: translateY(700px); opacity: 0; }
+}
+
+/* Zoom variations */
+.zoom-out { transform: scale(1); animation: zoomOut 1s forwards; }
+@keyframes zoomOut {
+  50% { opacity: 1; transform: scale(0.3); }
+  100% { opacity: 0; transform: scale(0.3); }
+}
+
+.zoom-in-up { transform: scale(0.1) translateY(2000px); opacity: 0; animation: zoomInUp 1s forwards; }
+@keyframes zoomInUp {
+  60% { opacity: 1; transform: scale(0.475) translateY(-60px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.zoom-in-down { transform: scale(0.1) translateY(-2000px); opacity: 0; animation: zoomInDown 1s forwards; }
+@keyframes zoomInDown {
+  60% { opacity: 1; transform: scale(0.475) translateY(60px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* Slide and fade combination */
+.slide-fade-up { transform: translateY(100px); opacity: 0; animation: slideFadeUp 1s forwards; }
+@keyframes slideFadeUp {
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+.slide-fade-down { transform: translateY(-100px); opacity: 0; animation: slideFadeDown 1s forwards; }
+@keyframes slideFadeDown {
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+.slide-fade-left { transform: translateX(-100px); opacity: 0; animation: slideFadeLeft 1s forwards; }
+@keyframes slideFadeLeft {
+  100% { transform: translateX(0); opacity: 1; }
+}
+
+.slide-fade-right { transform: translateX(100px); opacity: 0; animation: slideFadeRight 1s forwards; }
+@keyframes slideFadeRight {
+  100% { transform: translateX(0); opacity: 1; }
+}
+
+/* Utility classes for different speeds */
+.slow { animation-duration: 2s; }
+.fast { animation-duration: 0.5s; }
+.delay-1 { animation-delay: 0.25s; }
+.delay-2 { animation-delay: 0.5s; }
+.delay-3 { animation-delay: 0.75s; }
+.delay-4 { animation-delay: 1s; }
+
+/* Infinite animations */
+.infinite { animation-iteration-count: infinite; }
 
     .ripple-effect {
       position: absolute;
@@ -172,14 +378,9 @@
     reader.readAsDataURL(file);
   }
 
- function addImage(url, animation = 'fade', name = '', insertAt = null) {
-  const index = insertAt !== null ? insertAt : images.length;
-  const newImage = { url, animation, name };
-  if (insertAt !== null) {
-    images.splice(insertAt, 0, newImage);
-  } else {
-    images.push(newImage);
-  }
+  function addImage(url, animation = 'fade', name = '') {
+    const index = images.length;
+    images.push({ url, animation, name });
 
     const div = document.createElement('div');
     div.className = 'image-item';
@@ -190,7 +391,7 @@
     img.src = url;
 
     const select = document.createElement('select');
-    ['fade', 'slide', 'zoom'].forEach(a => {
+    ['fade', 'slide', 'zoom', 'slide-up', 'slide-up' , 'slide-down', 'slide-right', 'bounce-in', 'flip-in', 'swing-in', 'rubber-band', 'jello', 'pulse', 'shake', 'wobble', 'heartbeat', 'flip-x', 'flip-y', 'roll-in', 'roll-out', 'light-speed-in', 'hinge', 'zoom-out', 'zoom-in-up', 'zoom-in-down', 'slide-fade-up', 'slide-fade-down', 'slide-fade-left', 'slide-fade-right', 'slow',  'rotate', 'infinite'].forEach(a => {
       const opt = document.createElement('option');
       opt.value = a;
       opt.textContent = a;
@@ -222,8 +423,6 @@
     dupBtn.onclick = () => {
       addImage(url, animation, name + ' (Copy)');
     };
-
-    
     const editBtn = document.createElement('button');
     editBtn.className = 'edit-btn';
     editBtn.textContent = '✎';
