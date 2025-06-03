@@ -124,7 +124,7 @@
 </head>
 <body>
   <div class="container">
-    <h2>YP Admission Toml Tools</h2>
+    <h2>YP Jobs Toml Tools</h2>
 
     <label for="typeSelector">Select Type</label>
     <select id="typeSelector"></select>
@@ -164,16 +164,20 @@
     const outputSection = document.getElementById("outputSection");
 
     const allOptions = [
-      "type", "post-type","title", "AdmissionName",  "PostName", "seo_title", "Department", "OfficialSource", "description", "State", "category", "Notification",  "begindate", "lastdate", "admitcardName", "ResultName",  "eligibility", "Domicile", "imageBanner", "summary", "cssStyles", "impdates","applyfees", "qualification", "how_to", "documents", "keywords",   "age_limit","shortinfo", "InnerPost", "faqs", "from_date", "to_date", "notificationdate", "pdfName" 
+     "title", "type", "post_type", "recruitment",  "PostName", "totalPost", "seo_title", "Department", "OfficialSource", "description", "State", "category", "Notification",  "begindate", "lastdate", "eligibility", "Domicile",  "summary", "impdates","applyfees", "qualification", "how_to", "documents", "keywords", "age_limit", "shortinfo", "InnerPost",  "from_date", "to_date",  "notificationdate", "candidates", "imageBanner", "cssStyles", "faqs", "admitcardName", "ResultName", "pdfName" 
     ];
 
     const defaultTexts = {
-      type: "admission",
-      category: "Admission",
+      type: "Recruitment",
+      post_type: "latest-jobs",
+      Recruitment: "Recruitment 2025",
+      category: "Recruitemnt",
+      candidates: "Male & Female",
       OfficialSource: "https://yojnaportal.com/",
       cssStyles: "css/posts/admission.css",
       InnerPost: " आवदेन । तिथिया | आवश्यकता । महत्तपूर्ण लिंक",
       how_to: `आधिकारिक वेबसाइट पर जाएं:
+      नवीनतम नोटिफिकेश पढे:
       Candidate Online Form सेक्शन में जाएं :
       रजिस्ट्रेशन करें:
       आवेदन फॉर्म भरें:

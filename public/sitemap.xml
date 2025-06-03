@@ -61,8 +61,14 @@
   </url><url>
     <loc>http://localhost:1313/farmgen/admission/</loc>
   </url><url>
+    <loc>http://localhost:1313/farmgen/recruitment/</loc>
+  </url><url>
+    <loc>http://localhost:1313/pragentation/image-to-pragents/</loc>
+  </url><url>
     <loc>http://localhost:1313/categories/</loc>
   </url><url>
     <loc>http://localhost:1313/farmgen/</loc>
+  </url><url>
+    <loc>http://localhost:1313/pragentation/</loc>
   </url>
 </urlset>
