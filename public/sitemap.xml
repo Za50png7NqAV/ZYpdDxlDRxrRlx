@@ -2,6 +2,12 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>http://localhost:1313/pragentation/image-to-pragents/</loc>
+    <lastmod>2025-06-03T14:23:23+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/pragentation/</loc>
+    <lastmod>2025-06-03T14:23:23+05:30</lastmod>
+  </url><url>
     <loc>http://localhost:1313/image-tools/</loc>
     <lastmod>2025-02-27T14:23:23+05:30</lastmod>
   </url><url>
@@ -63,12 +69,8 @@
   </url><url>
     <loc>http://localhost:1313/farmgen/recruitment/</loc>
   </url><url>
-    <loc>http://localhost:1313/pragentation/image-to-pragents/</loc>
-  </url><url>
     <loc>http://localhost:1313/categories/</loc>
   </url><url>
     <loc>http://localhost:1313/farmgen/</loc>
-  </url><url>
-    <loc>http://localhost:1313/pragentation/</loc>
   </url>
 </urlset>
