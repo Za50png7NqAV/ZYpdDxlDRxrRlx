@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -79,7 +80,7 @@
     .presentation-img.active {
       opacity: 1;
     }
-   /* Existing animations */
+    
 .fade { opacity: 0; animation: fadeIn 1s forwards; }
 @keyframes fadeIn {
   to { opacity: 1; }
@@ -100,7 +101,7 @@
   to { transform: rotate(0); }
 }
 
-/* Additional entrance animations */
+ 
 .slide-up { transform: translateY(100%); animation: slideUp 1s forwards; }
 @keyframes slideUp {
   to { transform: translateY(0); }
@@ -161,7 +162,7 @@
   88.8% { transform: skewX(-0.1953125deg) skewY(-0.1953125deg); }
 }
 
-/* Attention seekers */
+ 
 .pulse { animation: pulse 2s infinite; }
 @keyframes pulse {
   0% { transform: scale(1); }
@@ -196,7 +197,7 @@
   70% { transform: scale(1); }
 }
 
-/* Flipping animations */
+ 
 .flip-x { animation: flipX 1s forwards; }
 @keyframes flipX {
   0% { transform: perspective(400px) rotateX(90deg); opacity: 0; }
@@ -215,7 +216,7 @@
   100% { transform: perspective(400px) rotateY(0deg); opacity: 1; }
 }
 
-/* Rolling animations */
+ 
 .roll-in { transform: translateX(-100%) rotate(-120deg); animation: rollIn 1s forwards; }
 @keyframes rollIn {
   100% { transform: translateX(0) rotate(0deg); }
@@ -226,7 +227,7 @@
   100% { transform: translateX(100%) rotate(120deg); opacity: 0; }
 }
 
-/* Light speed animations */
+ 
 .light-speed-in { transform: translateX(100%) skewX(-30deg); opacity: 0; animation: lightSpeedIn 1s forwards; }
 @keyframes lightSpeedIn {
   60% { transform: translateX(-20%) skewX(20deg); opacity: 1; }
@@ -234,7 +235,7 @@
   100% { transform: translateX(0) skewX(0); opacity: 1; }
 }
 
-/* Hinge animation */
+ 
 .hinge { animation: hinge 2s forwards; }
 @keyframes hinge {
   0% { transform-origin: top left; }
@@ -243,7 +244,7 @@
   100% { transform: translateY(700px); opacity: 0; }
 }
 
-/* Zoom variations */
+ 
 .zoom-out { transform: scale(1); animation: zoomOut 1s forwards; }
 @keyframes zoomOut {
   50% { opacity: 1; transform: scale(0.3); }
@@ -262,7 +263,7 @@
   100% { opacity: 1; transform: scale(1) translateY(0); }
 }
 
-/* Slide and fade combination */
+ 
 .slide-fade-up { transform: translateY(100px); opacity: 0; animation: slideFadeUp 1s forwards; }
 @keyframes slideFadeUp {
   100% { transform: translateY(0); opacity: 1; }
@@ -283,7 +284,7 @@
   100% { transform: translateX(0); opacity: 1; }
 }
 
-/* Utility classes for different speeds */
+ 
 .slow { animation-duration: 2s; }
 .fast { animation-duration: 0.5s; }
 .delay-1 { animation-delay: 0.25s; }
@@ -291,7 +292,7 @@
 .delay-3 { animation-delay: 0.75s; }
 .delay-4 { animation-delay: 1s; }
 
-/* Infinite animations */
+ 
 .infinite { animation-iteration-count: infinite; }
 
     .ripple-effect {
@@ -443,7 +444,7 @@
       fileInput.click();
     };
 
-    // Drag Events
+    
     div.addEventListener('dragstart', (e) => {
       e.dataTransfer.setData('text/plain', index);
     });
@@ -563,6 +564,19 @@
       const percent = ((current + 1) / imgs.length) * 100;
       progressBar.style.width = percent + '%';
     }
+     document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    exitPresentation();
+  }
+});
+
+function exitPresentation() {
+  document.getElementById('presentation').style.display = 'none';
+  document.getElementById('controls').style.display = 'block';
+  document.getElementById('imageList').style.display = 'flex';
+  document.body.style.overflow = 'auto';
+}
+
   }
 
   function deleteAllImages() {
