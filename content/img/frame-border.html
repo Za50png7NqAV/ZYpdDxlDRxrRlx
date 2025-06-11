@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Image Frame Tool</title>
+
+  <!-- Cropper.js -->
+  <link href="https://unpkg.com/cropperjs@1.5.13/dist/cropper.min.css" rel="stylesheet"/>
+  <script src="https://unpkg.com/cropperjs@1.5.13/dist/cropper.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .frame-container {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    .image-frame {
+      border-style: solid;
+      border-width: 5px;
+      border-top-color: red;
+      border-left-color: red;
+      border-right-color: #FFA500;
+      border-bottom-color: #FFA500;
+      background: white;
+      padding: 2px;
+      position: relative;
+    }
+
+    .inner-frame {
+      background: #f8f8f8;
+      max-width: 600px;
+      min-height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .image-placeholder {
+      text-align: center;
+      color: #666;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .actual-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .logo-section {
+      text-align: center;
+      margin-top: -30px;
+    }
+
+    .logo-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .logo-placeholder {
+      min-width: 200px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      position: relative;
+    }
+
+    .actual-logo {
+      width: 100%;
+      max-height: 60px;
+      object-fit: contain;
+      padding: 5px;
+    }
+
+    .icon-bar {
+      position: absolute;
+      top: 2px;
+      right: 2px;
+      display: flex;
+      gap: 5px;
+    }
+
+    .icon-bar span {
+      cursor: pointer;
+      background: white;
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+    }
+
+    .button-container {
+      position: sticky;
+     top: 20px;
+     background: white;
+      text-align: center;
+      z-index: 999;
+    }
+
+    .button-container button {
+      padding: 10px 15px;
+      margin: 5px;
+        background: linear-gradient(to bottom right, #ff0000 0%, #ff9933 100%);
+      color:white;
+      border:none;
+    font-weight: 600;
+      font-size: 16px;
+      cursor: pointer;
+    }
+button:hover {opacity: 80%;}
+ input[type="color"] {
+     width: 150px;
+     height: 50px;
+     border:0.5px dashed black;
+    }
+
+
+    input[type="file"] {
+      display: none;
+    }
+
+    .not-for-print {
+      display: block;
+    }
+
+    .border-bg {
+      background-color: white;
+      width: 200px;
+      height: 10px;
+      margin: -10px auto;
+      position: relative;
+    }
+
+    @media print {
+      .not-for-print, .button-container, .border-color  {
+        display: none !important;
+      }
+    }
+}
+   #captureArea{ margin:10px; }
+
+    @media (max-width: 900px) {
+      .inner-frame {
+        width: 90vw;
+        height: 400px;
+      }
+    }
+  </style>
+</head>
+<body>
+ 
+
+  <div class="button-container">
+    <button onclick="downloadImage()">📥 Download</button>
+    <button onclick="printImage()">🖨️ Print</button>
+    <button onclick="resetImage()">♻️ Reset Image</button>
+    <button onclick="shareImage()">📤 Share</button>
+  </div>
+</div>
+
+<div class="frame-container">
+  <div id="captureArea">
+    <div class="image-frame" id="imageFrame">
+      <div class="inner-frame" id="dropZone" onclick="document.getElementById('imageInput').click()">
+        <div class="image-placeholder" id="imagePlaceholder">
+          📷 Click, Paste or Drop Image Here<br/>
+          <span style="font-size: 14px; color: #999;">यहाँ image upload करें</span>
+        </div>
+      </div>
+    </div>
+    <div class="border-bg"> </div>
+    <div class="logo-section">
+      <div class="logo-container">
+        <div class="logo-placeholder" id="logo1">
+          <div class="icon-bar not-for-print">
+            <span onclick="document.getElementById('logoInput1').click()">✏️</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+ <div class="border-color" style="text-align: center; margin-top: 10px;">
+    <input type="color" id="colorTopLeft" value="#ff0000" onchange="applyTwoBorders()" />
+    <input type="color" id="colorRightBottom" value="#ffa500" onchange="applyTwoBorders()" />
+  </div>
+
+<input type="file" id="imageInput" accept="image/*" onchange="loadImage(event)">
+<input type="file" id="logoInput1" accept="image/*" onchange="loadLogo(event, 1)">
+
+<!-- Cropper Modal -->
+<div id="cropModal" class="not-for-print" style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; background:#000000cc; z-index:9999; justify-content:center; align-items:center;">
+  <div style="background:white; padding:20px; border-radius:10px; max-width:90vw; max-height:90vh; overflow:auto;">
+    <img id="cropImage" style="max-width:100%; max-height:70vh;">
+    <div style="text-align:center; margin-top:10px;">
+      <button onclick="applyCrop()">✅ Apply</button>
+      <button onclick="closeCrop()">❌ Cancel</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  let cropper;
+  let uploadedFileName = "download.png";
+
+  function applyTwoBorders() {
+    const color1 = document.getElementById('colorTopLeft').value;
+    const color2 = document.getElementById('colorRightBottom').value;
+    const frame = document.getElementById('imageFrame');
+    frame.style.borderTopColor = color1;
+    frame.style.borderLeftColor = color1;
+    frame.style.borderRightColor = color2;
+    frame.style.borderBottomColor = color2;
+    localStorage.setItem("borderTopLeft", color1);
+    localStorage.setItem("borderRightBottom", color2);
+  }
+
+  function loadImage(event) {
+    const file = event.target.files[0];
+    if (file && file.type.startsWith("image/")) {
+      uploadedFileName = file.name;
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        document.getElementById('cropImage').src = e.target.result;
+        openCropModal();
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+
+  function loadImageFromBlob(blob) {
+    uploadedFileName = "pasted-image.png";
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      document.getElementById('cropImage').src = e.target.result;
+      openCropModal();
+    };
+    reader.readAsDataURL(blob);
+  }
+
+  function openCropModal() {
+    document.getElementById('cropModal').style.display = 'flex';
+    const image = document.getElementById('cropImage');
+    cropper = new Cropper(image, {
+      aspectRatio: NaN,
+      viewMode: 1
+    });
+  }
+
+  function closeCrop() {
+    cropper.destroy();
+    cropper = null;
+    document.getElementById('cropModal').style.display = 'none';
+  }
+
+  function applyCrop() {
+    const canvas = cropper.getCroppedCanvas({ maxWidth: 1024, maxHeight: 1024 });
+    const dataUrl = canvas.toDataURL("image/png");
+    document.getElementById('imagePlaceholder').innerHTML = `<img src="${dataUrl}" class="actual-image">`;
+    localStorage.setItem('imageData', dataUrl);
+    closeCrop();
+  }
+
+function downloadImage() {
+  closeCrop(); // hide crop if open
+  document.querySelectorAll('.not-for-print').forEach(e => e.style.display = 'none');
+
+  html2canvas(document.getElementById("captureArea"), {
+    scale: 3,
+    useCORS: true
+  }).then(canvas => {
+    const link = document.createElement("a");
+    link.download = uploadedFileName.replace(/\.[^/.]+$/, "") + "-framed.png";
+    link.href = canvas.toDataURL("image/png");
+    link.click();
+    document.querySelectorAll('.not-for-print').forEach(e => e.style.display = 'flex');
+  });
+}
+
+
+  function printImage() {
+    document.querySelectorAll('.not-for-print').forEach(e => e.style.display = 'none');
+    window.print();
+    document.querySelectorAll('.not-for-print').forEach(e => e.style.display = 'flex');
+  }
+
+  function resetImage() {
+    document.getElementById('imagePlaceholder').innerHTML = `📷 Click, Paste or Drop Image Here<br/><span style="font-size: 14px; color: #999;">यहाँ image upload करें</span>`;
+    localStorage.removeItem('imageData');
+  }
+
+  function loadLogo(event, logoNumber) {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = e => {
+        const data = e.target.result;
+        localStorage.setItem('logo' + logoNumber, data);
+        renderLogo(logoNumber, data);
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+
+  function renderLogo(logoNumber, logoData) {
+    const logo = document.getElementById(`logo${logoNumber}`);
+    logo.innerHTML = `
+      <img onclick="document.getElementById('logoInput${logoNumber}').click()" src="${logoData}" class="actual-logo"/>
+      <div class="icon-bar not-for-print">
+        <span onclick="document.getElementById('logoInput${logoNumber}').click()">✏️</span>
+      </div>`;
+  }
+
+  function shareImage() {
+  closeCrop(); // अगर क्रॉप पॉपअप खुला है तो बंद कर दें
+  document.querySelectorAll('.not-for-print').forEach(e => e.style.display = 'none');
+
+  html2canvas(document.getElementById("captureArea"), {
+    scale: 3,
+    useCORS: true
+  }).then(canvas => {
+    canvas.toBlob(blob => {
+      const file = new File([blob], uploadedFileName.replace(/\.[^/.]+$/, "") + "-yp-framed.png", { type: 'image/png' });
+
+      if (navigator.canShare && navigator.canShare({ files: [file] })) {
+        navigator.share({
+          files: [file],
+          title: 'Image Frame',
+          text: 'Generated Image Frame from Tool'
+        }).catch(err => {
+          alert("Sharing failed: " + err);
+        });
+      } else {
+        alert("Sharing not supported on this device/browser.");
+      }
+
+      document.querySelectorAll('.not-for-print').forEach(e => e.style.display = 'flex');
+    }, 'image/png');
+  });
+}
+
+
+  // Restore image/logo/colors on load
+  window.onload = () => {
+    const savedImage = localStorage.getItem("imageData");
+    if (savedImage) {
+      document.getElementById("imagePlaceholder").innerHTML = `<img src="${savedImage}" class="actual-image">`;
+    }
+    const logo = localStorage.getItem("logo1");
+    if (logo) renderLogo(1, logo);
+    const color1 = localStorage.getItem("borderTopLeft");
+    const color2 = localStorage.getItem("borderRightBottom");
+    if (color1 && color2) {
+      document.getElementById('colorTopLeft').value = color1;
+      document.getElementById('colorRightBottom').value = color2;
+      applyTwoBorders();
+    }
+  };
+
+  // Paste and Drag Support
+  const dropZone = document.getElementById('dropZone');
+  dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.style.background = '#e0e0e0'; });
+  dropZone.addEventListener('dragleave', () => { dropZone.style.background = '#f8f8f8'; });
+  dropZone.addEventListener('drop', e => {
+    e.preventDefault();
+    dropZone.style.background = '#f8f8f8';
+    const file = e.dataTransfer.files[0];
+    if (file && file.type.startsWith('image/')) loadImageFromBlob(file);
+  });
+
+  document.addEventListener('paste', e => {
+    const items = e.clipboardData.items;
+    for (let i = 0; i < items.length; i++) {
+      if (items[i].type.indexOf("image") !== -1) {
+        const file = items[i].getAsFile();
+        loadImageFromBlob(file);
+      }
+    }
+  });
+  function closeCrop() {
+  if (cropper) {
+    cropper.destroy();
+    cropper = null;
+  }
+  document.getElementById('cropModal').style.display = 'none';
+  console.log("Crop modal closed");
+}
+</script>
+</body>
+</html>
