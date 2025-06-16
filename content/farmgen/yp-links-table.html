@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>🔗 Multi Link TOML Generator</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f0f0f0; padding: 20px; }
+    .link-block {
+      background: white;
+      border: 1px solid #ccc;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      position: relative;
+    }
+    .link-block input {
+      padding: 5px;
+      margin: 5px;
+    }
+    .action-row {
+      display: flex;
+      align-items: center;
+      margin-bottom: 5px;
+    }
+    .action-row input {
+      flex: 1;
+    }
+    .btn {
+      padding: 6px 12px;
+      margin: 5px 3px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .add-action { background-color: #007bff; color: white; }
+    .delete-action { background-color: red; color: white; }
+    .delete-link { background-color: darkred; color: white; float: right; }
+    .add-link { background-color: green; color: white; }
+    .clear-all { background-color: #000; color: white; }
+    #output {
+      white-space: pre-wrap;
+      background: #222;
+      color: #0f0;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+    .copy-btn {
+      background: orange;
+      color: black;
+    }
+    .title-label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>🔗 Multi Link TOML Generator</h2>
+
+ 
+
+  <div id="container"></div>
+ <button class="btn add-link" onclick="addLinkBlock()">➕ Add New Link</button>
+  <button class="btn" onclick="generateTOML()">📄 Generate TOML</button>
+  <button class="btn copy-btn" onclick="copyTOML()">📋 Copy</button>
+  <button class="btn clear-all" onclick="clearAll()">🗑️ Clear All</button>
+  <div id="output"></div>
+
+  <script>
+    let linkIndex = 0;
+
+    function saveToLocalStorage() {
+      const data = [];
+      const blocks = document.querySelectorAll(".link-block");
+
+      blocks.forEach(block => {
+        const linkId = block.id.split('-')[1];
+        const title = document.getElementById(`title-${linkId}`).value.trim();
+        const actions = [];
+        const actionRows = block.querySelectorAll(".action-row");
+
+        actionRows.forEach(row => {
+          const actionId = row.id.split("-")[1];
+          const nameEl = document.getElementById(`name-${actionId}`);
+          const urlEl = document.getElementById(`url-${actionId}`);
+          if (nameEl && urlEl && nameEl.value && urlEl.value) {
+            actions.push({ name: nameEl.value, url: urlEl.value });
+          }
+        });
+
+        if (title) {
+          data.push({ title, actions });
+        }
+      });
+
+      localStorage.setItem("multiLinkData", JSON.stringify(data));
+    }
+
+    function loadFromLocalStorage() {
+      const data = JSON.parse(localStorage.getItem("multiLinkData") || "[]");
+      data.forEach(item => {
+        const id = linkIndex++;
+        addLinkBlock(false, id);
+        document.getElementById(`title-${id}`).value = item.title;
+        item.actions.forEach(action => addAction(id, action.name, action.url));
+      });
+    }
+
+    function addLinkBlock(save = true, id = linkIndex) {
+      const container = document.getElementById("container");
+      const block = document.createElement("div");
+      block.className = "link-block";
+      block.id = `link-${id}`;
+
+      block.innerHTML = `
+        <button class="btn delete-link" onclick="removeElement('link-${id}')">❌ Delete Link</button>
+        <label class="title-label">📌 Title:</label>
+        <input type="text" id="title-${id}" placeholder="Link Title" oninput="saveToLocalStorage()" />
+        <div id="actions-${id}"></div>
+        <button class="btn add-action" onclick="addAction(${id})">+ Add Action</button>
+      `;
+
+      container.appendChild(block);
+      if (save) {
+        addAction(id);
+        linkIndex++;
+        saveToLocalStorage();
+      }
+    }
+
+    function addAction(linkId, name = "", url = "") {
+      const actionsContainer = document.getElementById(`actions-${linkId}`);
+      const actionId = Date.now() + Math.floor(Math.random() * 1000);
+      const row = document.createElement("div");
+      row.className = "action-row";
+      row.id = `action-${actionId}`;
+
+      row.innerHTML = `
+        <input type="text" placeholder="Action Name" id="name-${actionId}" value="${name}" oninput="saveToLocalStorage()" />
+        <input type="text" placeholder="URL" id="url-${actionId}" value="${url}" oninput="saveToLocalStorage()" />
+        <button class="btn delete-action" onclick="removeElement('action-${actionId}')">X</button>
+      `;
+
+      actionsContainer.appendChild(row);
+      saveToLocalStorage();
+    }
+
+    function removeElement(id) {
+      const el = document.getElementById(id);
+      if (el) el.remove();
+      saveToLocalStorage();
+    }
+
+    function generateTOML() {
+      let output = "";
+      const blocks = document.querySelectorAll(".link-block");
+
+      blocks.forEach(block => {
+        const linkId = block.id.split('-')[1];
+        const title = document.getElementById(`title-${linkId}`).value.trim();
+
+        if (!title) return;
+
+        output += `[[links.item]]\ntitle = "${title}"\nactions = [\n`;
+
+        const actions = block.querySelectorAll(".action-row");
+        actions.forEach(row => {
+          const actionId = row.id.split("-")[1];
+          const name = document.getElementById(`name-${actionId}`);
+          const url = document.getElementById(`url-${actionId}`);
+          if (name && url && name.value.trim() && url.value.trim()) {
+            output += `  { name = "${name.value.trim()}", url = "${url.value.trim()}" },\n`;
+          }
+        });
+
+        output += "]\n\n";
+      });
+
+      document.getElementById("output").textContent = output.trim();
+    }
+
+    function copyTOML() {
+      const text = document.getElementById("output").textContent;
+      if (text) {
+        navigator.clipboard.writeText(text)
+          .then(() => alert("✅ TOML copied!"))
+          .catch(() => alert("❌ Copy failed."));
+      } else {
+        alert("⚠️ Please generate the TOML first.");
+      }
+    }
+
+    function clearAll() {
+      if (confirm("Are you sure you want to delete everything?")) {
+        localStorage.removeItem("multiLinkData");
+        document.getElementById("container").innerHTML = "";
+        document.getElementById("output").textContent = "";
+        linkIndex = 0;
+        addLinkBlock();
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      loadFromLocalStorage();
+      if (document.querySelectorAll(".link-block").length === 0) {
+        addLinkBlock();
+      }
+    });
+  </script>
+
+</body>
+</html>
