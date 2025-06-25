@@ -148,7 +148,7 @@
     const outputSection = document.getElementById("outputSection");
 
     const allOptions = [
-      "title", "type", "post_type",  "PostName",  "seo_title", "activedate",  "OfficialSource",  "category",  "description", "Summary", "State",   "documents", "shortinfo",  "how_to", "faqs",  "keywords", "InnerPost",   "imageBanner", "cssStyles",   "begindate",  "lastdate", "ResultName", "AdmitcardName",  "content_html", "RecommendName", "pdfName" 
+      "title", "type", "post_type", "Department", "PostName",  "seo_title", "activedate",  "OfficialSource",  "category",  "description", "Summary", "State",   "documents", "shortinfo",  "how_to", "faqs",   "keywords", "InnerPost", "eligibility",  "imageBanner", "cssStyles",   "begindate",  "lastdate", "ResultName", "Result",  "AdmitcardName", "Admitcard", "content_html", "RecommendName", "pdfName" 
     ];
 
     const defaultTexts = {
@@ -156,42 +156,40 @@
       PostName: "best head title",
       activedate: "2025-12-31",
       post_type: "Result",
-      eligibility: `
-      निवासीः आवेदक मध्यप्रदेश का निवासी होना चाहिए
-      आयु सीमाः 18 वर्ष से अधिक आयु का होना चाहिए
-      ` ,
+     Result: "yes",
+     Admitcard: "yes",
       content_html: "can use html" ,
       category: "Schemes",
       imageBanner: "#",
       OfficialSource: "https://yojnaportal.com/",
       cssStyles: "css/posts/howto.css",
-      InnerPost: " आवदेन । तिथिया | आवश्यकता । महत्तपूर्ण लिंक",
-      faqs:  `अक्सर पूंछे जानें वाले प्रश्न
-       प्रशनः उत्र` ,
+      InnerPost: "Details | Importent Dates |Useful Links",
+      faqs:  `faqs
+       Qus.///Ans` ,
       how_to: `
-      आधिकारिक वेबसाइट पर जाएं:
-      नवीनतम नोटिफिकेश पढे:
-      Candidate Online Form सेक्शन में जाएं:
-      रजिस्ट्रेशन करें:
-      आवेदन फॉर्म भरें:
-      फीस का भुगतान करें:
-      आवेदन पत्र प्रिंट करें:` ,
+  Visit the official website:  
+  Read the latest notification:  
+  Go to the Candidate Online Form section:  
+  Complete the registration: 
+  Fill out the application form : 
+  Pay the application fee:  
+  Print the application form:` ,
       
       shortinfo:  `
-      संक्षिप्त जानकारीः
-      शुरू करने वालाः
-      प्रारंभ दिनांकः
-      मुख्य प्रदेशः  
-      प्रभावी ष्केत्रः
-      आवश्यकताः 
-      आवदेन प्रकियाः ऑनलाइन/ऑफलाइन
-      आवेदन तिथिः` ,
+Post Detail:
+Exam Name: 
+Admit Card Release Date:
+Exam Date:
+Result Declared: 
+Exam Mode: Offline / CBT 
+Exam Centers: 
+Total Posts:
+Official Website:` ,
      documents: `
-     शैक्षिणिक योग्यता
-     10वीं अकसूची
-     आधार कार्ड
-     मोबाइल नंबर एवं ईमेल आई डी
-     फोटो एवं हस्ताक्षर`
+     Printed Admit Card
+     One Photo ID Proof
+     Passport Size Photo
+     `
     };
 
     let entries = [];
@@ -267,8 +265,8 @@
 
   const forceArrayTypes = [
     "impdates", "Whatis", "eligibility", "cssstyles", "age_limit",
-    "importantdates", "applyfees", "qualification", "conclusion", "keywords",
-    "how_to", "faqs", "content_html", "documents", "shortinfo", "lastdate"
+    "importantdates", "applyfees", "qualification",  "conclusion", "keywords",
+    "how_to", "faqs", "content_html", "documents", "eligibility", "shortinfo"
   ];
 
   let result = entries.map(entry => {
