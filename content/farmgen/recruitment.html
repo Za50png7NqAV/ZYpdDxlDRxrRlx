@@ -136,7 +136,7 @@
     const outputSection = document.getElementById("outputSection");
 
     const allOptions = [
-     "title", "type", "post_type", "recruitment",  "PostName", "totalPost", "seo_title",  "Department", "OfficialSource", "description", "State", "category", "Notification",  "begindate", "lastdate", "activedate", "eligibility", "qualification", "physical", "castewise" , "Domicile",  "summary", "impdates","applyfees",  "how_to", "documents", "keywords", "age_limit", "shortinfo", "InnerPost",  "from_date", "to_date",  "notificationdate", "candidates", "imageBanner", "cssStyles", "faqs", "admitcardName", "ResultName", "content_html","pdfName" 
+     "title", "type", "post_type", "recruitment",  "PostName", "totalPost", "seo_title",  "Department", "OfficialSource", "description", "State", "category", "Notification",  "begindate", "lastdate", "activedate", "eligibility", "qualification", "physical", "castewise" , "Domicile",  "summary", "impdates","applyfees",  "how_to", "documents", "keywords", "age_limit", "shortinfo", "InnerPost",    "notificationdate", "candidates", "imageBanner", "cssStyles", "faqs", "admitcardName", "ResultName", "content_html", "from_date", "to_date", "pdfName" 
     ];
 
     const defaultTexts = {
@@ -146,39 +146,48 @@
       eligibility: "10th/12th/Graduation/Post Graduation",
       qualification: "M.Sc / Equivalent Degree with 55% Marks for General / OBC Candidates.",
       Recruitment: "Recruitment 2025",
-      castewise: "GEN: 12| OBC:10 | SC:8 | SC: 6" ,
+      castewise: `
+      Gen | OBC | SC | ST | EWS
+        0 | 0 | 0 | 0 | 0   
+`,
       content_html: "can use html" ,
       category: "Recruitemnt",
       candidates: "Male & Female",
       OfficialSource: "https://yojnaportal.com/",
       cssStyles: "css/posts/admission.css",
-      InnerPost: " आवदेन । तिथिया | आवश्यकता । महत्तपूर्ण लिंक",
-      how_to: `
-      आधिकारिक वेबसाइट पर जाएं:
-      नवीनतम नोटिफिकेश पढे:
-      Candidate Online Form सेक्शन में जाएं:
-      रजिस्ट्रेशन करें:
-      आवेदन फॉर्म भरें:
-      फीस का भुगतान करें:
-      आवेदन पत्र प्रिंट करें:` ,
-      shortinfo:  `
-      पद का नामः
-      कुल पदः
-      न्यूनतम शिक्षाः
-      अभ्यर्थीः महिला एवं पुरुष  
-      न्यूनतम आयुः
-      प्रारंभिक वेतनः
-      आवदेन प्रकियाः ऑनलाइन/ऑफलाइन
-      आवेदन तिथिः` ,
-     documents: `
-     शैक्षिणिक योग्यता
-     10वीं अकसूची
-     आधार कार्ड
-     मोबाइल नंबर एवं ईमेल आई डी
-     फोटो एवं हस्ताक्षर`,
-       age_limit: `
-       न्यूनतम आयुः
-       अधिकतम आयुः`
+      InnerPost: " Application | Dates | Requirements | Important Links",
+
+how_to: `
+Visit the official website:
+Read the latest notification:
+Go to the Candidate Online Form section:
+Complete the registration:
+Fill out the application form:
+Pay the application fee:
+Print the application form:`,
+
+shortinfo: `
+Post Name:
+Total Posts:
+Minimum Qualification:
+Candidates: Male and Female
+Minimum Age:
+Initial Salary:
+Application Mode: Online/Offline
+Application Dates:`,
+
+documents: `
+Educational Qualification
+10th Marksheet
+Aadhaar Card
+Mobile Number and Email ID
+Photo and Signature`,
+
+age_limit: `
+Age Limit Age On 01/01/2025
+Minimum Age:
+Maximum Age:`
+
     };
 
     let entries = [];
@@ -251,7 +260,7 @@
 
     function generateOutput() {
       if (entries.length === 0) return alert("No entries added.");
-      const forceArrayTypes = ["impdates", "cssstyles", "age_limit", "importantdates", "applyfees", "qualification", "keywords", "how_to", "faqs", "documents", "shortinfo"];
+      const forceArrayTypes = ["impdates", "cssstyles", "age_limit", "importantdates", "applyfees", "qualification", "physical", "castewise" , "keywords", "how_to", "faqs", "documents", "shortinfo"];
       let result = entries.map(entry => {
         const { type, text } = entry;
         const typeKey = type.toLowerCase();
