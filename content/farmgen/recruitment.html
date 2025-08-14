@@ -136,7 +136,7 @@
     const outputSection = document.getElementById("outputSection");
 
     const allOptions = [
-     "title", "type", "post_type", "recruitment",  "PostName", "totalPost", "seo_title",  "Department", "OfficialSource", "description", "State", "category", "Notification",  "begindate", "lastdate", "activedate", "eligibility", "qualification", "physical", "castewise" , "Domicile",  "summary", "impdates","applyfees",  "how_to", "documents", "keywords", "age_limit", "shortinfo", "InnerPost",    "notificationdate", "candidates", "imageBanner", "cssStyles", "faqs", "admitcardName", "ResultName", "content_html", "from_date", "to_date", "pdfName" 
+      "type", "post_type",  "title", "recruitment", "seo_title", "keywords",  "PostName", "totalPost",    "Notification",  "notificationdate", "begindate", "lastdate", "activedate", "impdates", "Examstart", "applyfees", "Department", "OfficialSource",  "State", "category", "description", "summary",   "eligibility", "qualification", "physical", "castewise" , "Domicile",   "age_limit",   "how_to", "shortinfo", "InnerPost",    "candidates", "imageBanner",  "documents",  "cssStyles", "faqs", "admitcardName", "ResultName", "content_html",  "pdfName" 
     ];
 
     const defaultTexts = {
@@ -146,15 +146,22 @@
       eligibility: "10th/12th/Graduation/Post Graduation",
       qualification: "M.Sc / Equivalent Degree with 55% Marks for General / OBC Candidates.",
       Recruitment: "Recruitment 2025",
-      castewise: `
-      Gen | OBC | SC | ST | EWS
-        0 | 0 | 0 | 0 | 0   
-`,
+      castewise: ` #  `, 
+      applyfees: ` 
+      General / OBC / EWS: ₹0/-
+      SC / ST / Female: ₹0/- 
+      Payment can be made online through UPI, net banking, debit/credit card, etc.
+      `, 
+      impdates: `      Begin Date:  
+      Last Date:  
+      Payment Last Date:  
+      Admit Card: To be notified soon  
+      Exam Date: To be notified soon`,
       content_html: "can use html" ,
       category: "Recruitemnt",
       candidates: "Male & Female",
       OfficialSource: "https://yojnaportal.com/",
-      cssStyles: "css/posts/admission.css",
+      cssStyles: "css/posts/recruitment.css",
       InnerPost: " Application | Dates | Requirements | Important Links",
 
 how_to: `
@@ -167,24 +174,17 @@ Pay the application fee:
 Print the application form:`,
 
 shortinfo: `
-Post Name:
-Total Posts:
-Minimum Qualification:
-Candidates: Male and Female
-Minimum Age:
-Initial Salary:
-Application Mode: Online/Offline
-Application Dates:`,
+#`,
 
 documents: `
 Educational Qualification
 10th Marksheet
 Aadhaar Card
 Mobile Number and Email ID
-Photo and Signature`,
+Photo and Signature etc.`,
 
 age_limit: `
-Age Limit Age On 01/01/2025
+Age Limit as On 01/01/2025
 Minimum Age:
 Maximum Age:`
 
