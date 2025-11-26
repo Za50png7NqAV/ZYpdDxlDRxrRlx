@@ -136,22 +136,23 @@
     const outputSection = document.getElementById("outputSection");
 
     const allOptions = [
-      "type", "post_type",  "title", "recruitment", "seo_title", "keywords",  "PostName", "totalPost",    "Notification",  "notificationdate", "begindate", "lastdate", "activedate", "impdates", "Examstart", "applyfees", "Department", "OfficialSource",  "State", "category", "description", "summary",   "eligibility", "qualification", "physical", "castewise" , "Domicile",   "age_limit",   "how_to", "shortinfo", "InnerPost",    "candidates", "imageBanner",  "documents",  "cssStyles", "faqs", "admitcardName", "ResultName", "content_html",  "pdfName" 
+      "type", "post_type",  "title", "recruitment", "seo_title", "keywords",  "PostName", "totalPost",   "Notification",  "notificationdate", "begindate", "lastdate", "activedate", "impdates",  "applyfees", "Department", "OfficialSource",  "State", "category", "description", "summary",  "eligibility", "Domicile", "age_limit",  "how_to",     "InnerPost",  "candidates", "imageBanner",  "documents",  "cssStyles", "Examstart",  "qualification", "physical", "castewise" , "shortinfo", "faqs", "admitcardName", "ResultName", "content_html",  "pdfName" 
     ];
 
     const defaultTexts = {
       type: "Recruitment",
-      activedate: "2025-12-31" ,
+      State: "All India",
+      activedate: "2026-12-31" ,
       post_type: "latest-jobs",
       eligibility: "10th/12th/Graduation/Post Graduation",
-      qualification: "M.Sc / Equivalent Degree with 55% Marks for General / OBC Candidates.",
-      Recruitment: "Recruitment 2025",
+      qualification: "#",
+      recruitment: "Recruitment 2026",
       castewise: ` #  `, 
       applyfees: ` 
       General / OBC / EWS: ₹0/-
-      SC / ST / Female: ₹0/- 
-      Payment can be made online through UPI, net banking, debit/credit card, etc.
-      `, 
+      SC / ST / PwBD: ₹0/- 
+      All Category Female: ₹0/- 
+      Payment can be made online through UPI, net banking, debit/credit card, etc. `, 
       Domicile: `All India Eligible Candidates`,
       impdates: `Begin Date:  
       Last Date:  
@@ -178,11 +179,13 @@ GajabJobs.com
 www.GajabJobs.com
 Gazab Jobs
 GazabJobs.com
-Yojna Portal
-Yojana Portal
+Yojna Portal 
+Yojna Portal mp
+Yojana Portal mp
 YojnaPortal.com
 Sarkari Result
 SarkariResult.com
+vacancy update mp
 Free Job Alerts
 Latest Vacancy India
 All India Jobs Update
@@ -210,8 +213,7 @@ Exam Result Update
 फ्री जॉब अलर्ट
 नौकरी रिजल्ट`,
 
-shortinfo: `
-#`,
+shortinfo: `#`,
 
 documents: `
 Educational Qualification
@@ -221,7 +223,7 @@ Mobile Number and Email ID
 Photo and Signature etc.`,
 
 age_limit: `
-Age Limit as On 01/01/2025
+Age Limit as On 01/01/2026
 Minimum Age:
 Maximum Age:`
 
