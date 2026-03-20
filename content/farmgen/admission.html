@@ -136,21 +136,55 @@
     const outputSection = document.getElementById("outputSection");
 
     const allOptions = [
-      "type", "post-type","title", "AdmissionName",  "PostName", "seo_title", "Department", "OfficialSource", "description", "State", "category", "Notification",  "begindate", "lastdate", "admitcardName", "ResultName",  "eligibility", "Domicile", "imageBanner", "summary", "cssStyles", "impdates","applyfees", "qualification", "how_to", "documents", "keywords",   "age_limit","shortinfo", "InnerPost", "faqs", "from_date", "to_date", "notificationdate", "pdfName" 
+      "type", "post_type", "title", "seo_title", "AdmissionName",  "PostName",  "keywords",  "Notification", "notificationdate", "begindate", "lastdate", "activedate", "impdates", "applyfees", "Department", "OfficialSource", "description", "summary", "eligibility", "State",  "Domicile", "category", "age_limit", "how_to", "cssStyles", "InnerPost", "imageBanner",  "qualification",  "documents",  "shortinfo", "admitcardName", "ResultName",    "faqs", "from_date", "to_date", "pdfName" 
     ];
 
     const defaultTexts = {
+      applyfees: ` 
+      General / OBC / EWS: ₹0/-
+      SC / ST / PwBD: ₹0/- 
+      All Category Female: ₹0/- 
+      Payment can be made online through UPI, net banking, debit/credit card, etc. `,
+      impdates: `Online Start Date:  
+     Last Date to Apply:  
+      Payment Last Date:  
+      Admit Card: To be notified soon  
+      Exam Date: To be notified soon`,
+      post_type: "student:,
       type: "admission",
       category: "Admission",
       OfficialSource: "https://yojnaportal.com/",
       cssStyles: "css/posts/admission.css",
       InnerPost: " आवदेन । तिथिया | आवश्यकता । महत्तपूर्ण लिंक",
-      how_to: `आधिकारिक वेबसाइट पर जाएं:
-      Candidate Online Form सेक्शन में जाएं :
-      रजिस्ट्रेशन करें:
-      आवेदन फॉर्म भरें:
-      फीस का भुगतान करें:
-      आवेदन पत्र प्रिंट करें:` ,
+      keywords: `Gajab Jobs
+GajabJobs.com
+www.GajabJobs.com
+Gazab Jobs
+GazabJobs.com
+Yojna Portal 
+Yojna Portal mp
+Yojana Portal mp
+YojnaPortal.com
+Sarkari Result
+SarkariResult.com
+vacancy update mp
+All India Jobs Update
+MP Vacancy Updates
+Yojana Update MP
+MP Online Update
+New Government Schemes
+Admit Card Download
+Exam Notification
+Online Form
+Exam Result Update
+Admission form
+education
+गजब जॉब्स
+योजना पोर्टल
+सरकारी रिजल्ट
+नई सरकारी योजनाएँ
+नौकरी रिजल्ट` ,
+   
      documents: `शैक्षिणिक योग्यता
      आयु प्रमाणः 10वीं अकसूची
      आधार कार्ड
@@ -159,8 +193,10 @@
      मोबाइल नंबर एवं ईमेल आई डी
      फोटो एवं हस्ताक्षर`,
        age_limit: `
-       न्यूनतम आयुः
-       अधिकतम आयुः`
+       Age Limit as on: 
+       Minimum Age:
+       Maximum Age:
+      
     };
 
     let entries = [];
